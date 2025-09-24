@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'https://anken.mjcoders.com/';
+$config['base_url'] = 'https://home.mxbpos.cn/';
 //微信APPID
 $config['WECHAT_APPID']	= '';//
 
