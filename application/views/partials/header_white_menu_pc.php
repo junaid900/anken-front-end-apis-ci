@@ -371,7 +371,7 @@ ul li {
                 <li class="nav-item"><a class="nav-link" href="<?= base_url("contact") ?>">Contact </a></li>
                 <ul class="nav-link mt-0 me-0">
                     <li class="nav-item institut_menu institut_whitemenu me-0">
-                        <div class="list list_off2 fw-bold px-md-4" style="margin-left:-2px;"><?php echo get_phrase('login_txt') ?></div>
+                        <div class="list list_off2 fw-bold px-md-4" style="margin-left:-2px;"><?php echo get_phrase('login') ?></div>
                     </li>
                     <li class="nav-item institut_menu institut_whitemenu">
                         <div class="list list_off2 fw-bold px-md-4" id="language_changer">中文</div>
