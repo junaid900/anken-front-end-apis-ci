@@ -49,6 +49,9 @@
 #popupOverlay{
   background: rgba(0, 0, 0, 0.4);
 }
+ .contact .featureImg{
+    height: 100% !important;
+  }
 /*==================================== */
 #hover_card .card .static-overlay{
   background: rgba(0, 0, 0, 0.4);
@@ -122,6 +125,7 @@
                                             alt="Interior"
                                             onerror="this.onerror=null; this.src='<?= base_url('themes/assets/images/placeholder.jpg') ?>';"
                                         >
+                                        <?php if(isset($data["title_" . s_lang()]) && $data["title_" . s_lang()] != '#'){ ?>
                                         <div class="static-overlay">
                                             <div class="txt_name"><?= $data["title_" . s_lang()] ?></div>
                                             <div class="txt_desig"><?= $data["short_description_".s_lang()] ?></div>
@@ -129,9 +133,10 @@
                                                 <a data-rel="pop_disp_1" class="open-popup" href="#"><?= get_phrase("MORE") ?><span class="txt_name_img"></span></a>
                                             </div>
                                         </div>
+                                        <?php } ?>
                                     </div>
                                 </div>
-
+                                <?php if(isset($data["title_" . s_lang()]) && $data["title_" . s_lang()] != '#'){ ?>
                                 <div id="popupOverlay" class="custom-popup">
                                     <div class="c-popup-content">
                                         <div class="popup-content">
@@ -140,6 +145,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                <?php } ?>
 
                             <?php endforeach; ?>
 

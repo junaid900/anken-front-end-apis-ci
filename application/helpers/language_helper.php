@@ -20,7 +20,7 @@ if ( ! function_exists('get_phrase'))
             $CI =& get_instance();
             $CI->load->database();
         
-            $current_language = $CI->session->userdata('current_language');
+            $current_language = $CI->session->userdata('current_language') ?? 'english';
         
             // if ($current_language == '') {
             //     $current_language = $CI->db

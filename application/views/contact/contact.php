@@ -134,13 +134,13 @@
 
                               <div class="form-container">
 
-                                  <h5 class="bold-heading">Get in Touch with us</h5>
+                                  <h5 class="bold-heading"><?php echo get_phrase('get_in_touch_with_us'); ?></h5>
 
                                    <div class="row">
 
                                       <div class="form-group col-6 p-0 contact-form-item intro_input">
 
-                                        <label>Name & Surname*</label>
+                                        <label><?php echo get_phrase('name_&_surname'); ?>*</label>
 
                                         <input type="text" class="form-control">
 
@@ -150,7 +150,7 @@
 
                                       <div class="form-group col-6 p-0 contact-form-item intro_input INTRO2">
 
-                                        <label>Phone*</label>
+                                        <label><?php echo get_phrase('Phone'); ?>*</label>
 
                                         <input type="text" class="form-control">
 
@@ -160,7 +160,7 @@
 
                                         <div class="form-group col-md-12 p-0 mt-3 contact-form-item">
 
-                                          <label>Email*</label>
+                                          <label><?php echo get_phrase('Email'); ?>*</label>
 
                                           <input type="email" class="form-control">
 
@@ -168,13 +168,13 @@
 
                                         <div class="form-group col-md-12 p-0 mt-3 contact-form-item message">
 
-                                          <label>Message</label>
+                                          <label><?php echo get_phrase('Message'); ?></label>
 
                                           <textarea cols="40" rows="5" class="form-control" rows="4"></textarea>
 
                                           <div class="txt-required-field">
 
-                                              *Required Field
+                                              *<?php echo get_phrase('Required_Field'); ?>
 
                                           </div>
 
@@ -188,7 +188,7 @@
 
                             <div class="form-group ps-3 pe-4 col-md-12 contact-form-item">
 
-                              <label class="m-0">What district is ANKENs office in? </label>
+                              <label class="m-0"><?php echo get_phrase('what_district_is_ANKENs_office_in'); ?>? </label>
 
                               <input type="text" class="form-control">
 
@@ -214,7 +214,7 @@
 
                                 <div class="col-md-5 col-5 p-3">
 
-                                        <h5 class="large-bold-heading"><strong>ANKEN Group’s <br> Contact Details</strong></h5>
+                                        <h5 class="large-bold-heading"><strong><?php  ?>ANKEN Group’s <br> Contact Details</strong></h5>
 
                                         <p class="bold-heading fw-bold">安垦集团联系方式</p>
 

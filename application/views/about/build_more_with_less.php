@@ -91,7 +91,7 @@
 
                             <?php if($page['middle_image1']) {?>
 
-                                <img src="<?= base_url() . $page['middle_image1']["path"] ?>" class="img-fluid who_we_are_bottom_img" alt="Interior" style="max-height: 450px">
+                                <img src="<?= base_url() . $page['top_image']["path"] ?>" class="img-fluid who_we_are_bottom_img" alt="Interior" style="max-height: 450px">
 
                             <?php } ?>
 

@@ -89,6 +89,12 @@ class Slug_router extends CI_Controller {
             $this->legacy_page($slug);
         }
 
+
+        $exists = $this->db->where('slug', $slug)->count_all_results('anken_our_company_page');
+        if ($exists > 0) {
+            $this->company_page($slug);
+        }
+
      
 
 
@@ -115,6 +121,7 @@ public function about_data($main_about , $slug){
             apd.bottom_image1, 
             apd.bottom_image2, 
             apd.bottom_image3,
+            apd.bottom_images_type,
     
     
             f.id as top_image_id,
@@ -745,6 +752,42 @@ public function legacy_page($slug){
     }
 
 
+    public function company_page($slug){
+        $page_data = [];
+        $this->db->where( 'slug', $slug );
+        $this->db->select('p.*, 
+            f.id as file_id, f.file as file_name, f.directory_id as file_directory');
+        $this->db->from('anken_our_company_page p');
+        $this->db->join('anken_file_library f', 'p.top_image = f.id', 'left');
+        $this->db->where('p.slug', $slug);
+        $row = $this->db->get()->row();
+        $rowArray = (array) $row;
+        $page_data["page_title"] = $rowArray['title_'.s_lang()];
+        $topImage = null;
+        if (!empty($row->file_id)) {
+            $filePath = ($row->file_directory == 0)
+                ? "{$this->libraryPath}/{$row->file_name}"
+                : "{$this->libraryPath}/{$row->file_directory}/{$row->file_name}";
+            $topImage = [
+                'id' => $row->file_id,
+                'file' => $row->file_name,
+                'directory_id' => $row->file_directory,
+                'path' => $filePath
+            ];
+        }
+
+        $rowArray['top_image_data'] = $topImage;
+        
+        $this->db->where( 'our_company_page_id', $row->id );
+        $partners = $this->db->get('anken_our_company_partners')->result_array();
+        
+        $page_data['company'] = $rowArray;
+        $page_data['partners'] = $partners;
+        // echo "here";
+        // var_dump($page_data);
+        $this->load->view( 'company/company', $page_data );
+        exit;
+    }
 
 
 }

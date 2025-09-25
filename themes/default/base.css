@@ -1173,6 +1173,10 @@ table td{border-collapse:collapse;border-width: 1px;border-spacing:0;padding:0;}
         color: #e4e4e4;
 
     }
+    .btn-close:focus {
+        outline: 0;
+        box-shadow: none;
+    }
 
 @media (max-width: 1140px) {
 

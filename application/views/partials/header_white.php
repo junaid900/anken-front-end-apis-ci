@@ -38,15 +38,9 @@ header("Cache-Control: max-age=300");
 
 <head>
 
-<!--<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />-->
-
-<!--<meta name="MobileOptimized" content="1340" />-->
-
-<!--<meta name="viewport" content="width=1340" />-->
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="shortcut icon" href="https://ankengroup.com/wp-content/themes/anken/_templateFiles/images/favicon.ico">
+    <link rel="shortcut icon" href="<?= base_url() . "themes/default/fav-icon.png"?>">
 
 
 

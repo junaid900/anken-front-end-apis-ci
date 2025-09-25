@@ -51,7 +51,7 @@ $about_url =  base_url() ;
 }
 
 .mega-item {
-    margin: 0 0 8px;
+    margin: 0 0 6px;
     padding-bottom: 8px;
     border-bottom: 1px solid #fff;
 }
@@ -255,11 +255,11 @@ ul li {
             <ul class="navbar-nav">
                 <!-- about ANKEN with Mega Menu -->
                 <li class="nav-item">
-                    <a class="nav-link" href="#" id="aboutAnkenBtn">about ANKEN</a>
+                    <a class="nav-link" href="#" id="aboutAnkenBtn"><?= get_phrase("About_ANKEN") ?></a>
                     <div class="mega-menu row" id="aboutAnkenMenu">
                         <div class="col-md-3 mega-menu-section">
                             <div>
-                                <p class="mega-sec-menu-title">OUR APPROACH</p>
+                                <p class="mega-sec-menu-title"><?= get_phrase("OUR_APPROACH") ?></p>
                             </div>
                             <?php foreach ($about_data as $item) : ?>
                             <div class="mega-item"><a class="dropdown-item"
@@ -311,11 +311,11 @@ ul li {
                         ];
                     ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" id="portfolioAnkenBtn">Our Portfolio</a>
+                    <a class="nav-link" href="#" id="portfolioAnkenBtn"><?= get_phrase("Our_Portfolio") ?></a>
                     <div class="mega-menu p-20 w-row" id="portfolioAnkenMenu">
                         <div class="w-md-80 p-10 mega-menu-section">
                             <div class="me-3 ms-3">
-                                <p class="mega-sec-menu-title">Anken Properties</p>
+                                <p class="mega-sec-menu-title"><?= get_phrase("Anken_Properties") ?></p>
                             </div>
                             <div class="row justify-content-center">
                               <?php foreach ($portfolio_data as $pMenuItem){ 
@@ -335,7 +335,7 @@ ul li {
                         </div>
                         <div class="w-md-20 p-10 mega-menu-section">
                             <div class="">
-                                <p class="mega-sec-menu-title border-0">LATEST RELEASE</p>
+                                <p class="mega-sec-menu-title border-0"><?= get_phrase("LATEST_RELEASE") ?></p>
                             </div>
                             <div class="row justify-content-center">
                                 <?php foreach ($portfolio_data as $pMenuItem){ 
@@ -350,7 +350,7 @@ ul li {
                         </div>
                         <div class="w-md-100 p-10 mega-menu-section">
                             <div class="me-0 ms-3">
-                                <p class="mega-sec-menu-title" style="font-size: 16px">Track Records</p>
+                                <p class="mega-sec-menu-title" style="font-size: 16px"><?= get_phrase("Track_Records") ?></p>
                             </div>
                             <div class="w-row">
                                 <?php foreach ($portfolio_data as $pMenuItem){ 
@@ -366,12 +366,12 @@ ul li {
                         <div class="w-md-100 pb-10"></div>
                     </div>
                 </li>
-                <li class="nav-item"><a class="nav-link" href="<?= base_url("event") ?>">News & Events</a></li>
-                <li class="nav-item"><a class="nav-link" href="<?= base_url("company") ?>">Our Company</a></li>
-                <li class="nav-item"><a class="nav-link" href="<?= base_url("contact") ?>">Contact </a></li>
+                <li class="nav-item"><a class="nav-link" href="<?= base_url("event") ?>"><?= get_phrase("News_&_Events") ?></a></li>
+                <li class="nav-item"><a class="nav-link" href="<?= base_url("our-company") ?>"><?= get_phrase("Our_Company") ?></a></li>
+                <li class="nav-item"><a class="nav-link" href="<?= base_url("contact") ?>"><?= get_phrase("Contact") ?></a></li>
                 <ul class="nav-link mt-0 me-0">
-                    <li class="nav-item institut_menu institut_whitemenu me-0">
-                        <div class="list list_off2 fw-bold px-md-4" style="margin-left:-2px;"><?php echo get_phrase('login') ?></div>
+                    <li class="nav-item institut_menu institut_whitemenu me-0" onclick="window.open('https://accounts.creams.io/login?change-login-account', '_self')">
+                        <div class="list list_off2 fw-bold px-md-4" style="margin-left:-2px;"><?php echo get_phrase('login_txt') ?></div>
                     </li>
                     <li class="nav-item institut_menu institut_whitemenu">
                         <div class="list list_off2 fw-bold px-md-4" id="language_changer">中文</div>

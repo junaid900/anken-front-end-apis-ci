@@ -76,22 +76,17 @@
                         <div class="col-md-5 ps-0 pb-2 internal_padding">
 
                             <div class="form-container c-left">
-
-                                <h5 class="large-bold-heading">Company Overview – Background</h5>
-
-                                <p>When we founded our urban design and architecture practice in 2003, we faced the problem of finding an inspiring and affordable workplace, so we decided to create our own.</p>
-
-                                <p>Today, we have cultivated a thriving business built on the same guiding principles that catalysed our journey almost 20 years ago.</p>
-
-                                <p>As our business expanded, we have brought new thinking to each stage of the property lifecycle, from financial models, partnerships, architecture, management and leasing strategies. ANKEN Group is now a multi-faceted business in the areas of development, property management and investment and still we approach every new project asking the right questions: how can we create a viable, sustainable place where people want to be?</p>
-
+                                <?php if($company['page_description_'.s_lang()]) {?>
+                                    <?= $company['page_description_'.s_lang()] ?>
+                                <?php } ?>
                             </div>
 
                         </div>
 
                         <div class="col-md-7 c-white-room pe-0">
-
-                          <img src="<?= base_url() ?>themes/assets/images/company_img.jpg" class="img-fluid mb-2 featureImg" alt="Interior">
+                            <?php if($company['top_image_data']) {?>
+                                <img src="<?= base_url() . $company['top_image_data']["path"] ?>" class="img-fluid mb-2 featureImg" alt="Interior">
+                            <?php } ?>
 
                         </div>
 
@@ -109,122 +104,72 @@
 
                               <div>
 
-                                  <h6>PARTNERS</h6>
+                                  <h6><?= get_phrase('PARTNERS') ?></h6>
 
                                   <p></p>
 
                               </div>
 
                           </div>
-
-                          <div class="col-5th p-2">
-
-                              <div>
-
-                                  <h6>ANKEN Boyue Management Co</h6>
-
-                                  <p>Group Company</p>
-
+                            <?php foreach($partners as $partner) { 
+                                    if($partner["type"] != 'partner'){
+                                        continue;
+                                    }
+                            ?>
+                              <div class="col-5th p-2">
+                    
+                                  <div>
+    
+                                      <h6><?= $partner['title_'.s_lang()] ?></h6>
+    
+                                      <p><?= $partner['company_name_'.s_lang()] ?></p>
+    
+                                  </div>
+    
                               </div>
-
-                          </div>
-
-                          <div class="col-5th p-2">
-
-                              <div>
-
-                                  <h6>ENCLAVE Planning Landscape Architecture</h6>
-
-                                  <p>Group Company</p>
-
-                              </div>
-
-                          </div>
-
-                            <div class="col-5th p-2">
-
-                                <div>
-
-                                    <h6>Hola Daisy</h6>
-
-                                    <p>Group Company</p>
-
-                                </div>
-
-                            </div>
+                            <?php  } ?>
+                          
 
                           <div class="col-5th p-2"></div>
 
                           <div class="mb-3 w-100"></div>
 
-                          <div class="col-5th p-2">
-
-                              <div>
-
-                                  <h6>SHANGTEX</h6>
-
-                                  <p>Development Partner</p>
-
-                              </div>
-
-                          </div>
-
-                          <div class="col-5th p-2">
-
-                              <div>
-
-                                  <h6>Goodland Holdings</h6>
-
-                                  <p>Development Partner</p>
-
-                              </div>
-
-                          </div>
-
-                          <div class="col-5th p-2">
-
-                              <div>
-
-                                  <h6>Asia Value Capital</h6>
-
-                                  <p>Investment Partner</p>
-
-                              </div>
-
-                          </div>
-
-                            <div class="col-5th p-2">
-
-                                <div>
-
-                                    <h6>Asia Green Real Estate</h6>
-
-                                    <p>Investment Partner</p>
-
-                                </div>
-
-                            </div>
-
-                          <div class="col-5th p-2">
-
-                                <div>
-
-                                    <h6>Shanghai Jingtai</h6>
-
-                                    <p>Investment Partner</p>
-
-                                </div>
-
-                          </div>
-
                         </div>
-
+                        <div class="d-flex flex-wrap pb-4 mb-4">
+                             <div class="col-5th p-2">
+    
+                                  <div>
+    
+                                      <h6><?= get_phrase('SHANGTEX') ?></h6>
+    
+                                      <p><?= get_phrase('Development_Partner') ?></p>
+    
+                                  </div>
+    
+                              </div>
+                                <?php foreach($partners as $partner) { 
+                                    if($partner["type"] != 'development_partner'){
+                                        continue;
+                                    }
+                                ?>
+                                
+                                <div class="col-5th p-2">
+    
+                                  <div>
+                                    <?php if( isset($partner['title_'.s_lang()]) ){ ?>
+                                      <h6><?= $partner['title_'.s_lang()] ?></h6>
+                                    <?php } ?>
+                                    <?php if( isset($partner['company_name_'.s_lang()]) ){ ?>
+                                      <p><?= $partner['company_name_'.s_lang()] ?></p>
+                                     <?php } ?>
+    
+                                  </div>
+    
+                                </div>
+                                <?php } ?>
+                          </div>
                       </div>
-
-                      
-
                   </div>
-
         </div>
 
     </div>
@@ -235,4 +180,4 @@
 
 
 
-<?php $this->load->view('partials/footer')?>
+<?php $this->load->view('partials/footer'); exit;?>

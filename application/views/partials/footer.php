@@ -81,6 +81,9 @@
 .anken_section_centerr{
     width: 96%;
 }
+    .anken_footer_area {
+        padding: 8px 0px 25px 0px;
+    }
 </style>
 
 
@@ -91,9 +94,9 @@
 
         <div class="anken_section_centerr footer-sec my-0 ">
 
-            <div class="grouplist mt-0 mb-3">
-
-                ANKEN GROUP &copy; ALL RIGHTS RESERVED 2003-2025
+            <div class="grouplist mt-0 mb-sm-0 mb-3">
+ 
+                <?php echo get_phrase('anken_group_cap'); ?> &copy;  <?php echo get_phrase('all_rights_reserved'); ?> 2003-2025
 
             </div>
             <div class="social mt-0 mb-3">
@@ -284,7 +287,7 @@
         if(session_lang == 'english') {
             $('#language_changer').text('中文');
         } else {
-            $('#language_changer').text('English');
+            $('#language_changer').text('EN');
         }
     });
     $('#language_changer').on('click', function() {

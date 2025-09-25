@@ -43,6 +43,7 @@ class AboutPage extends SecureApiController {
                     'bottom_image1' => $request->bottom_image1,
                     'bottom_image2' => $request->bottom_image2,
                     'bottom_image3' => $request->bottom_image3,
+                    'bottom_images_type' => $request->bottom_images_type ?? '1',
                 ];
                 $this->db->where('id', $page->about_page_id)->update('anken_about_page_detail', $aboutPageData);
                 $aboutId = $page->about_page_id;
@@ -73,6 +74,7 @@ class AboutPage extends SecureApiController {
                     'bottom_image1' => $request->bottom_image1,
                     'bottom_image2' => $request->bottom_image2,
                     'bottom_image3' => $request->bottom_image3,
+                    'bottom_images_type' => $request->bottom_images_type ?? '1',
                 ];
                 $this->db->insert('anken_about_page_detail', $aboutPageData);
                 $aboutId = $this->db->insert_id();
@@ -192,6 +194,7 @@ class AboutPage extends SecureApiController {
             apd.bottom_image1, 
             apd.bottom_image2, 
             apd.bottom_image3,
+            apd.bottom_images_type,
     
             l.title_en as leasing_title_en,
             l.title_ch as leasing_title_ch,

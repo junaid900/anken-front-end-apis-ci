@@ -110,7 +110,7 @@
                                 <div class="w-md-40 pr-md-10 pb-sm-10 pb-md-0">
                                      <div id="customBeforeCarousel<?= $i ?>" class="carousel slide position-relative h-100" data-bs-ride="false">
                                           <div class="carousel-inner h-100">
-                                                <div class="carousel-label">Before</div>
+                                                <div class="carousel-label"><?= get_phrase("Before") ?></div>
                                                 <?php foreach($project["before"] as $k => $before_image){ ?>
                                                     <div class="carousel-item <?= $k === 0 ? 'active' : '' ?> h-100">
                                                       <img src='<?= base_url().$before_image['path'] ?>' class="d-block w-100" alt="Before Image">
@@ -129,7 +129,7 @@
                                     </div>
                                      <div class="w-md-40 p-0 pb-sm-10 pb-md-0">
                                         <div id="customAfterCarousel<?= $i ?>" class="carousel slide position-relative h-100" data-bs-ride="false">
-                                            <div class="carousel-label">After</div>
+                                            <div class="carousel-label"><?= get_phrase("After") ?></div>
                                              <div class="carousel-inner h-100">
                                                 <?php foreach($project["after"] as $k => $after_image){ ?>
                                                     <div class="carousel-item <?= $k === 0 ? 'active' : '' ?> h-100">
