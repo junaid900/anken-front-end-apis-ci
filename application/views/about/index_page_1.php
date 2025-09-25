@@ -89,7 +89,7 @@
 
                             </div>
 
-                            <div class="<?php echo $type_3 ?> ps-0 pr-0 pb-10 pb-md-0 bottom-item-img">
+                            <div class="<?php echo $type_3 ?> ps-0 pr-0 pb-sm-10 pb-md-0 bottom-item-img">
 
                               <img src="<?= base_url() . $page['bottom_image3']['path'] ?>" onerror="this.onerror=null; this.src='<?= base_url('themes/assets/images/31343C.svg'); ?>';" class="img-fluid who_we_are_bottom_img" alt="Interior">
 
