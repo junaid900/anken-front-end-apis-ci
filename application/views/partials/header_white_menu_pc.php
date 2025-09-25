@@ -385,12 +385,12 @@ ul li {
 <!-- Mobile Menu Drawer -->
 <div class="offcanvas offcanvas-end" tabindex="-1" id="mobileMenuDrawer">
     <div class="offcanvas-header">
-        <h5 class="offcanvas-title">MENU</h5>
+        <h5 class="offcanvas-title"><?= get_phrase("MENU") ?></h5>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
         <div class="mobile-nav-item">
-            <div class="mobile-menu-title">about ANKEN</div>
+            <div class="mobile-menu-title"><?= get_phrase("About_ANKEN") ?></div>
             <div class="mobile-mega-menu">
                 <?php foreach ($about_data as $item) : ?>
                     <a href="<?php echo $about_url . $item['slug']  ?>"><?php echo $item['title_'.s_lang()]; ?></a>
@@ -398,7 +398,7 @@ ul li {
             </div>
         </div>
         <div class="mobile-nav-item">
-            <a class="mobile-menu-title">Our Portfolio</a>
+            <a class="mobile-menu-title"><?= get_phrase("Our_Portfolio") ?></a>
             <div class="mobile-mega-menu">
                 <?php foreach($portfolio_data as $pitem){ ?>
                 <a href="<?= $portfolio_url . $pitem["slug"] ?>"><?= $pitem['title_'.s_lang()]; ?></a>
@@ -406,19 +406,19 @@ ul li {
             </div>
         </div>
         <div class="mobile-nav-item">
-            <a href="<?= base_url("event") ?>">News & Events</a>
+            <a href="<?= base_url("event") ?>"><?= get_phrase("News_&_Events") ?></a>
         </div>
         <div class="mobile-nav-item">
-            <a href="<?= base_url("our-company") ?>">Our Company</a>
+            <a href="<?= base_url("our-company") ?>"><?= get_phrase("Our_Company") ?></a>
         </div>
         <div class="mobile-nav-item">
-            <a href="<?= base_url("contact") ?>">Contact Us</a>
+            <a href="<?= base_url("contact") ?>"><?= get_phrase("Contact_Us") ?></a>
         </div>
         <div class="mobile-nav-item">
             <a href="#" class="language_changer_c">中文</a>
         </div>
         <div class="mobile-nav-item">
-            <a href="#" onclick="window.open('https://accounts.creams.io/login?change-login-account', '_self')">Login</a>
+            <a href="#" onclick="window.open('https://accounts.creams.io/login?change-login-account', '_self')"><?= get_phrase("Login") ?></a>
         </div>
     </div>
 </div>
