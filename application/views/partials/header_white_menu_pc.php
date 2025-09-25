@@ -400,8 +400,8 @@ ul li {
         <div class="mobile-nav-item">
             <a class="mobile-menu-title">Our Portfolio</a>
             <div class="mobile-mega-menu">
-                <?php foreach($portMenuTitles as $pitem){ ?>
-                <a href="<?= $pitem['url'] ?>"><?= $pitem['t'] ?></a>
+                <?php foreach($portfolio_data as $pitem){ ?>
+                <a href="href=<?= $portfolio_url . $pitem["slug"] ?>"><?= $pitem['title_'.s_lang()]; ?></a>
                 <?php } ?>
             </div>
         </div>
@@ -409,7 +409,7 @@ ul li {
             <a href="<?= base_url("event") ?>">News & Events</a>
         </div>
         <div class="mobile-nav-item">
-            <a href="<?= base_url("company") ?>">Our Company</a>
+            <a href="<?= base_url("our-company") ?>">Our Company</a>
         </div>
         <div class="mobile-nav-item">
             <a href="<?= base_url("contact") ?>">Contact Us</a>
