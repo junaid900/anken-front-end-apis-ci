@@ -285,12 +285,12 @@
     $('documant').ready(function() {
        let session_lang = '<?= $this->session->userdata('current_language') ?>';
         if(session_lang == 'english') {
-            $('#language_changer').text('中文');
+            $('.language_changer_c').text('中文');
         } else {
-            $('#language_changer').text('EN');
+            $('.language_changer_c').text('EN');
         }
     });
-    $('#language_changer').on('click', function() {
+    $(document).on('click','#language_changer, .language_changer_c', function() {
 
         // let selectedLang = $('#language_changer').text().trim();
         // console.log(selectedLang);

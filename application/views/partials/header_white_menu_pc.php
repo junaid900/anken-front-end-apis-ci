@@ -374,7 +374,7 @@ ul li {
                         <div class="list list_off2 fw-bold px-md-4" style="margin-left:-2px;"><?php echo get_phrase('login_txt') ?></div>
                     </li>
                     <li class="nav-item institut_menu institut_whitemenu">
-                        <div class="list list_off2 fw-bold px-md-4" id="language_changer">中文</div>
+                        <div class="list list_off2 fw-bold px-md-4 language_changer_c" id="language_changer">中文</div>
                     </li>
                 </ul>
             </ul>
@@ -415,10 +415,10 @@ ul li {
             <a href="<?= base_url("contact") ?>">Contact Us</a>
         </div>
         <div class="mobile-nav-item">
-            <a href="#">中文</a>
+            <a href="#" class="language_changer_c">中文</a>
         </div>
         <div class="mobile-nav-item">
-            <a href="#">Login</a>
+            <a href="#" onclick="window.open('https://accounts.creams.io/login?change-login-account', '_self')">Login</a>
         </div>
     </div>
 </div>
