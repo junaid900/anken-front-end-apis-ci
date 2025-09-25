@@ -401,7 +401,7 @@ ul li {
             <a class="mobile-menu-title">Our Portfolio</a>
             <div class="mobile-mega-menu">
                 <?php foreach($portfolio_data as $pitem){ ?>
-                <a href="href=<?= $portfolio_url . $pitem["slug"] ?>"><?= $pitem['title_'.s_lang()]; ?></a>
+                <a href="<?= $portfolio_url . $pitem["slug"] ?>"><?= $pitem['title_'.s_lang()]; ?></a>
                 <?php } ?>
             </div>
         </div>
