@@ -77,19 +77,19 @@
                            }
                           ?>
 
-                            <div class="<?php echo $type_1 ?> ps-0 pr-md-10 pb-sm-10 pb-md-0 bottom-item-img">
+                            <div class="<?php echo $type_1 ?> ps-0 pr-md-10 pb-xs-10 pb-md-0 bottom-item-img">
 
                               <img src="<?= base_url() . $page['bottom_image1']['path'] ?>" onerror="this.onerror=null; this.src='<?= base_url('themes/assets/images/31343C.svg'); ?>';" class="img-fluid who_we_are_bottom_img" alt="Interior">
 
                             </div>
 
-                            <div class="<?php echo $type_2 ?> ps-0 pr-md-10 pb-sm-10 pb-md-0 bottom-item-img">
+                            <div class="<?php echo $type_2 ?> ps-0 pr-md-10 pb-xs-10 pb-md-0 bottom-item-img">
 
                               <img src="<?= base_url() . $page['bottom_image2']['path'] ?>" onerror="this.onerror=null; this.src='<?= base_url('themes/assets/images/31343C.svg'); ?>';" class="img-fluid who_we_are_bottom_img" alt="Interior">
 
                             </div>
 
-                            <div class="<?php echo $type_3 ?> ps-0 pr-0 pb-sm-10 pb-md-0 bottom-item-img">
+                            <div class="<?php echo $type_3 ?> ps-0 pr-0 pb-md-0 bottom-item-img">
 
                               <img src="<?= base_url() . $page['bottom_image3']['path'] ?>" onerror="this.onerror=null; this.src='<?= base_url('themes/assets/images/31343C.svg'); ?>';" class="img-fluid who_we_are_bottom_img" alt="Interior">
 
