@@ -565,7 +565,8 @@ white-space: pre-line !important;
     .bx-viewport {
         height: fit-content !important;
     }
-
+    /* .bannerscfff{
+        overflow-x: scroll !important;  } */
 
 }
 </style>
@@ -611,7 +612,7 @@ white-space: pre-line !important;
                                         <li class="bx-clone slider-list-item"
                                             style="float: left; list-style: none; position: relative;;padding:0px;margin:0px;outline:0px;height:70px;display: flex;flex-direction: row;justify-content:left;align-items: center;">
                                             <a class="black"
-                                                href="<?= base_url().'our-portfolio/'.$location['slug'] ?>">
+                                                href="<?= base_url().$location['slug'] ?>">
                                                 <h3><?= $location['title_'.s_lang()]?></h3>
                                                 <?= $location['short_description_'.s_lang()] ?>
                                             </a>
@@ -630,96 +631,142 @@ white-space: pre-line !important;
                     </div>
 
                     <script>
-                    var current = 0;
-                    var total = <?= count($locations) - 4 ?>; // Use actual count of items
-                    var autoPlayInterval;
-                    // ======================================================================
-                    let current_width = 236; // default
+                   var current = 0;
+var total = <?= count($locations) - 4 ?>; // Use actual count of items
+var autoPlayInterval;
+// ======================================================================
+let current_width = 236; // default
 
-                    function checkWidth() {
-                        if (window.matchMedia("(max-width: 576px)").matches) {
-                            let el = document.querySelector(".home_s");
-                            let li_width = document.querySelectorAll(".bx-clone.slider-list-item");
-                            let controler = document.querySelector('.bx-has-controls-direction');
-                            let controllerWidth = controler.clientWidth;
-                            if (el) {
-                                current_width = el.offsetWidth;
-                                // ===============================================
-                                li_width.forEach((li, index) => {
-                                    if (index === li_width.length - 1) { // last element
-                                        li.style.width = (el.offsetWidth - 63) + "px";
-                                        console.log("Last li updated:", li);
-                                    } else {
-                                        li.style.width = el.offsetWidth + 'px';
-                                    }
-                                    li.style.paddingRight = controllerWidth + 'px';
-                                });
-                                // ===============================================
-                                console.log("Width at <=576px:", current_width);
-                            }
-                        }
-                    }
+function checkWidth() {
+    if (window.matchMedia("(max-width: 576px)").matches) {
+        let el = document.querySelector(".home_s");
+        let li_width = document.querySelectorAll(".bx-clone.slider-list-item");
+        let controler = document.querySelector('.bx-has-controls-direction');
+        let controllerWidth = controler.clientWidth;
+        if (el) {
+            current_width = el.offsetWidth;
+            // ===============================================
+            li_width.forEach((li, index) => {
+                if (index === li_width.length - 1) { // last element
+                    li.style.width = (el.offsetWidth - 63) + "px";
+                } else {
+                    li.style.width = el.offsetWidth + 'px';
+                }
+                li.style.paddingRight = controllerWidth + 'px';
+            });
+        }
+    }
+}
 
-                    // Run on page load
-                    checkWidth();
+// Run on page load
+checkWidth();
 
+// Run on window resize
+window.addEventListener("resize", checkWidth);
 
-                    // Run on window resize
-                    window.addEventListener("resize", checkWidth);
-                    // ======================================================================
-                    function tonext() {
-                        if (current == total) {
-                            current = 0;
-                        } else {
-                            current = current + 1;
-                        }
-                        $('.bannerscfff').stop().animate({
-                            'margin-left': '-' + (current * current_width) + 'px'
-                        }, 800);
+// ======================================================================
+function tonext() {
+    if (current == total) {
+        current = 0;
+    } else {
+        current = current + 1;
+    }
+    $('.bannerscfff').stop().animate({
+        'margin-left': '-' + (current * current_width) + 'px'
+    }, 800);
 
-                        // Reset autoplay timer when manually navigating
-                        resetAutoPlay();
-                    }
+    resetAutoPlay();
+}
 
-                    function toprev() {
-                        if (current == 0) {
-                            current = total;
-                        } else {
-                            current = current - 1;
-                        }
-                        $('.bannerscfff').stop().animate({
-                            'margin-left': '-' + (current * current_width) + 'px'
-                        }, 800);
+function toprev() {
+    if (current == 0) {
+        current = total;
+    } else {
+        current = current - 1;
+    }
+    $('.bannerscfff').stop().animate({
+        'margin-left': '-' + (current * current_width) + 'px'
+    }, 800);
 
-                        // Reset autoplay timer when manually navigating
-                        resetAutoPlay();
-                    }
+    resetAutoPlay();
+}
 
-                    function startAutoPlay() {
-                        autoPlayInterval = setInterval(function() {
-                            tonext();
-                        }, 3000); // 3 seconds
-                    }
+function startAutoPlay() {
+    autoPlayInterval = setInterval(function() {
+        tonext();
+    }, 3000); // 3 seconds
+}
 
-                    function resetAutoPlay() {
-                        clearInterval(autoPlayInterval);
-                        startAutoPlay();
-                    }
+function resetAutoPlay() {
+    clearInterval(autoPlayInterval);
+    startAutoPlay();
+}
 
-                    // Start autoplay when page loads
-                    $(document).ready(function() {
-                        startAutoPlay();
+// ======================================================================
+// Swipe support for mobile (only 1 slide at a time)
+let startX = 0;
+let startY = 0;
+let endX = 0;
+let endY = 0;
+let isSwiping = false;
 
-                        // Pause on hover
-                        $('.col_slider_home').hover(
-                            function() {
-                                clearInterval(autoPlayInterval);
-                            },
-                            function() {
-                                resetAutoPlay();
-                            }
-                        );
-                    });
+const slider = document.querySelector('.col_slider_home');
+
+if (slider) {
+    slider.addEventListener('touchstart', function(e) {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        endX = startX;
+        endY = startY;
+        isSwiping = true;
+
+        // Stop autoplay while swiping
+        clearInterval(autoPlayInterval);
+    }, { passive: true });
+
+    slider.addEventListener('touchmove', function(e) {
+        endX = e.touches[0].clientX;
+        endY = e.touches[0].clientY;
+    }, { passive: true });
+
+    slider.addEventListener('touchend', function() {
+        if (!isSwiping) return;
+
+        let diffX = startX - endX;
+        let diffY = startY - endY;
+
+        // Sirf tab swipe hoga jab horizontal move > vertical move
+        if (Math.abs(diffX) > Math.abs(diffY)) {
+            if (diffX > 50) {
+                tonext(); // left swipe
+            } else if (diffX < -50) {
+                toprev(); // right swipe
+            }
+        }
+
+        isSwiping = false;
+
+        // Resume autoplay
+        resetAutoPlay();
+    });
+}
+
+// ======================================================================
+// Start autoplay when page loads
+$(document).ready(function() {
+    startAutoPlay();
+
+    // Pause on hover (desktop only)
+    $('.col_slider_home').hover(
+        function() {
+            clearInterval(autoPlayInterval);
+        },
+        function() {
+            resetAutoPlay();
+        }
+    );
+});
+
                     </script>
 
 
