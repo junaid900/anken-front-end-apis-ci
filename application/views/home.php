@@ -567,7 +567,19 @@ white-space: pre-line !important;
     }
     /* .bannerscfff{
         overflow-x: scroll !important;  } */
-
+}
+.anken_about_data_text {
+    font-size: 36px !important;
+}
+.h_link.h2 span{
+    font-size: 36px !important;
+    font-weight: 600;
+}
+.content h3{
+    line-height: 24px !important;
+}
+.content .custom-group{
+    font-size: 12px !important;
 }
 </style>
 
@@ -609,14 +621,20 @@ white-space: pre-line !important;
                                     <ul class="bannerscfff scroller scroll"
                                         style="width: 1215%; position: relative;padding:0px;margin:0px;outline:0px;">
                                         <?php foreach($locations as $location){ ?>
-                                        <li class="bx-clone slider-list-item"
-                                            style="float: left; list-style: none; position: relative;;padding:0px;margin:0px;outline:0px;height:70px;display: flex;flex-direction: row;justify-content:left;align-items: center;">
-                                            <a class="black"
-                                                href="<?= base_url().$location['slug'] ?>">
-                                                <h3><?= $location['title_'.s_lang()]?></h3>
-                                                <?= $location['short_description_'.s_lang()] ?>
-                                            </a>
-                                        </li>
+                                            <?php
+                                            if($location['is_home'] != 1){
+                                                continue;
+                                            }else{
+                                            ?>
+                                            <li class="bx-clone slider-list-item"
+                                                style="float: left; list-style: none; position: relative;;padding:0px;margin:0px;outline:0px;height:70px;display: flex;flex-direction: row;justify-content:left;align-items: center;">
+                                                <a class="black"
+                                                    href="<?= base_url().$location['slug'] ?>">
+                                                    <h3><?= $location['title_'.s_lang()]?></h3>
+                                                    <?= $location['short_description_'.s_lang()] ?>
+                                                </a>
+                                            </li>
+                                            <?php } ?>
                                         <?php } ?>
                                     </ul>
                                 </div>
@@ -841,7 +859,7 @@ $(document).ready(function() {
                                     <?php foreach ($news as $k => $new): ?>
                                     <div class="col-md-6 col-12 lightWhite position-relative">
                                         <div class="content" style="max-height: 198px; overflow:hidden">
-                                            <h3 class="h2 f-22">
+                                            <h3 class="h2 f-22 d-introduction_<?php echo $k ?>">
                                                 <b><?= $new['date'] ?></b><br>
                                                 <b><?= htmlspecialchars($new['title_'.s_lang()]) ?></b>
                                             </h3>
@@ -936,7 +954,7 @@ $(document).ready(function() {
                                                                         <img src="<?= base_url() . $fecture->greenIcon['path'] ?>"
                                                                             width="30px" alt="">
                                                                     </span>
-                                                                    <p class="ps-2"><?= $fecture->text ?></p>
+                                                                    <p class="ps-2"><?php echo s_lang() == 'en' ? $fecture->text : $fecture->text_ch; ?></p>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -955,8 +973,8 @@ $(document).ready(function() {
                             <div class="col-lg-5 col-12 sec-2-3">
                                 <div class="rela_div  position-relative">
 
-                                    <h2 class="position-absolute"><a href="#"
-                                            class="h_link h2  <?php echo $all_data['bottom_cover3_url'] != '#' ? '' : 'hide_cursor' ; ?>"><?php echo $all_data['bottom_cover3_description_en'] ?></a>
+                                    <h2 class="position-absolute"><span style="z-index:999;"
+                                            class="h_link h2 position-relative   <?php echo $all_data['bottom_cover3_url'] != '#' ? '' : 'hide_cursor' ; ?>"><?php echo $all_data['bottom_cover3_description_'.s_lang()] ?></span>
                                     </h2>
                                     <a href="<?php echo base_url() . $all_data['bottom_cover3_url'] != '#' ? $all_data['bottom_cover3_url'] : 'javascript:void(0)' ; ?>"
                                         class="img-box <?php echo $all_data['bottom_cover3_url'] != '#' ? '' : 'hide_cursor' ; ?>"><img
@@ -966,8 +984,8 @@ $(document).ready(function() {
                                 </div>
                                 <div class="w-100 mt-2 sec-2-4 position-relative get-in-touch">
                                     <h2 class="position-absolute" style="z-index: 999;">
-                                        <a href="#"
-                                            class="h_link h2  <?php echo $all_data['bottom_cover4_url'] != '#' ? '' : 'hide_cursor' ; ?>"><?php echo $all_data['bottom_cover4_description_en'] ?></a>
+                                        <span
+                                            class="h_link h2 anken_about_data_text  <?php echo $all_data['bottom_cover4_url'] != '#' ? '' : 'hide_cursor' ; ?>"><?php echo $all_data['bottom_cover4_description_'.s_lang()] ?></span>
                                     </h2>
 
                                     <a href="<?php echo base_url() . $all_data['bottom_cover4_url'] != '#' ? $all_data['bottom_cover4_url'] : 'javascript:void(0)' ; ?>"

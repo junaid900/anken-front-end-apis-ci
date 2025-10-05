@@ -36,6 +36,13 @@
     #mob_fler .order_n_2{
         order:2 !important;
     }
+    #hover_card .card .overlay {
+    position: absolute;
+    bottom: -77%;
+    }
+    #hover_card {
+        padding: 0 5px !important;
+    }
    }
 </style>
 
@@ -112,7 +119,7 @@
                         <div class="d-flex flex-wrap w-100" id="hover_card">
                             <div class="col-5th">
                               <div class="card bg-dark-grey p-3 h-100">
-                                  <h4 class="places-made-heading">PLACES<br>MADE OF<br>PEOPLE</h4>
+                                  <h4 class="places-made-heading"><?php echo get_phrase('PLACES'); ?><br><?php echo get_phrase('MADE_OF'); ?><br><?php echo get_phrase('PEOPLE'); ?></h4>
                               </div>  
                             </div>
                         <?php foreach($event_places as $place){ ?>

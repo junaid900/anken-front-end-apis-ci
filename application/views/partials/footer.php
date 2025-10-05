@@ -282,39 +282,38 @@
 <!-- language code start from here -->
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
 <script>
-    $('documant').ready(function() {
-       let session_lang = '<?= $this->session->userdata('current_language') ?>';
-        if(session_lang == 'english') {
-            $('.language_changer_c').text('中文');
-        } else {
-            $('.language_changer_c').text('EN');
-        }
-    });
-    $(document).on('click','#language_changer, .language_changer_c', function() {
+$(document).ready(function() {   // ✅ fixed 'documant' -> 'document'
+   let session_lang = '<?= strtolower($this->session->userdata('current_language')) ?>';
+   console.log("Current Language:", session_lang);
 
-        // let selectedLang = $('#language_changer').text().trim();
-        // console.log(selectedLang);
-        let lang = '<?= $this->session->userdata('current_language') ?>' || 'english';
-        if (lang == 'english') {
-            lang = 'chinese';
-        } else {
-            lang = 'english';
+   if(session_lang === 'english') {
+       $('.language_changer_c').text('中文');
+   } else {
+       $('.language_changer_c').text('EN');
+   }
+});
+
+$(document).on('click','#language_changer, .language_changer_c', function() {
+    let lang = '<?= strtolower($this->session->userdata('current_language')) ?>' || 'english';
+    console.log("Before toggle:", lang);
+
+    if (lang === 'english') {
+        lang = 'chinese';
+    } else {
+        lang = 'english';
+    }
+
+    $.ajax({
+        url: "<?= base_url() ?>language",
+        type: "POST",
+        data: { lang: lang },
+        success: function(response) {
+            console.log("Language changed to:", lang);
+            location.reload();
         }
-        $.ajax({
-            url: "<?= base_url() ?>language",
-            type: "POST",
-            data: { lang: lang },
-            success: function(response) {
-                console.log("Language changed to: " + lang);
-                
-                console.log(response);
-                location.reload();
-                
-            }
-        });
     });
+});
 </script>
-
 
 
 <!-- language code end frm here  -->

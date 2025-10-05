@@ -21,6 +21,7 @@ if ( ! function_exists('get_phrase'))
             $CI->load->database();
         
             $current_language = $CI->session->userdata('current_language') ?? 'english';
+           
         
             // if ($current_language == '') {
             //     $current_language = $CI->db
@@ -61,3 +62,37 @@ if ( ! function_exists('get_phrase'))
 // ------------------------------------------------------------------------
 /* End of file language_helper.php */
 /* Location: ./system/helpers/language_helper.php */
+if (!function_exists('get_country_by_ip')) {
+    function get_country_by_ip($ip = null)
+    {
+        if ($ip == null) {
+            $ip = $_SERVER['REMOTE_ADDR'] ?? '127.0.0.1';
+        }
+
+        // Localhost fallback for testing
+        if ($ip == "127.0.0.1" || $ip == "::1") {
+            $ip = "8.8.8.8"; // Google DNS (USA) for testing
+        }
+
+        $url = "http://ip-api.com/json/{$ip}?fields=status,country";
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+        $response = curl_exec($ch);
+        curl_close($ch);
+
+        if ($response === false) {
+            return "unknown"; // API call failed
+        }
+
+        $data = json_decode($response, true);
+
+        if ($data && isset($data['status']) && $data['status'] == 'success') {
+            return strtolower($data['country']); // pakistan, china, united states, etc.
+        }
+
+        return "unknown";
+    }
+}

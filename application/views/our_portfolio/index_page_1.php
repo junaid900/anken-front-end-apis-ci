@@ -76,15 +76,27 @@ h1 {
                 <div class='container-fluid page-content bg-light contact portfolio p-5'>
 
                     <div class='w-row'>
-
-                        <div class='w-md-60 p-5'>
+                        <?php
+                        $width_1 = 'w-md-60';
+                        $width_2 = 'w-md-40';
+                        if($page['top_type'] == '1'){
+                             $width_1 = 'w-md-60';
+                             $width_2 = 'w-md-40';
+                        }
+                        if($page['top_type'] == '2'){
+                             $width_1 = 'w-md-40';
+                             $width_2 = 'w-md-60';
+                        }
+                        ?>
+                        
+                        <div class='<?php echo $width_1 ?> p-5'>
 
                             <img src="<?= base_url() . $page['top_image1']['path'] ?>" class='img-fluid featureImg'
                                 alt='Interior'>
 
                         </div>
 
-                        <div class='w-md-40 c-white-room p-5'>
+                        <div class='<?php echo $width_2 ?> c-white-room p-5'>
 
                             <img src="<?= base_url() . $page['top_image2']['path'] ?>" class='img-fluid featureImg'
                                 alt='Interior'>
@@ -133,7 +145,8 @@ h1 {
                                     <?php
 
                                         foreach ( $page[ 'text_features' ] as $key => $value ) {
-                                            echo '<li>' . $value->text . '</li>';
+                                            $text_data = s_lang() == 'en' ? $value->text : $value->text_ch;
+                                            echo '<li>' . $text_data . '</li>';
                                         }
                                         ?>
 
@@ -211,7 +224,7 @@ h1 {
                                             <img style='width: 26px; height: 26px;object-fit: contain;'
                                                 src="<?= base_url() . $value->greenIcon['path'] ?>" alt=''>
                                         </span>
-                                        <?=$value->text ?>
+                                        <?php echo s_lang() == 'en' ? $value->text : $value->text_ch ?>
                                     </li>
                                     <?php } ?>
                                     <!-- <li><span class = 'icon_img'> <img src = '<?= base_url() ?>themes/assets/images/build-more/icons/adaptive.png' alt = ''></span>Adaptive Re-Use of an underutilised and abandoned building</li> -->

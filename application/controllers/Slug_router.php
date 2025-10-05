@@ -18,20 +18,28 @@ class Slug_router extends CI_Controller {
 
         
 
-        $lang = $this->session->userdata('lang');
+        // ✅ First-time load check
+        if (!$this->session->userdata('current_language')) {
+            $ip = $this->input->ip_address();
+            $country = get_country_by_ip($ip);
 
-        if($lang == 'ch'){
-
-            $this->session->set_userdata('lang', 'ch');
-
-            $this->langtype = '_ch';
-
-        }else{
-
-            $this->session->set_userdata('lang', 'en');
-
-            $this->langtype = '_en';
-
+            if ($country == "china") {
+                $this->session->set_userdata('current_language', 'Chinese');
+                $this->session->set_userdata('language_country', 'Chinese');
+                $this->session->set_userdata('controller_name', 'ch');
+                $this->session->set_userdata('lang', 'ch');
+                $this->langtype = '_ch';
+            } else {
+                $this->session->set_userdata('current_language', 'english');
+                $this->session->set_userdata('language_country', 'english');
+                $this->session->set_userdata('controller_name', 'en');
+                $this->session->set_userdata('lang', 'en');
+                $this->langtype = '_en';
+            }
+        } else {
+            // If session already exists, just set langtype
+            $lang = $this->session->userdata('lang');
+            $this->langtype = ($lang == 'ch') ? '_ch' : '_en';
         }
 
     }
