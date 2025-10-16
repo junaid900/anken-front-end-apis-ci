@@ -132,7 +132,7 @@ $route['translate_uri_dashes'] = FALSE;
 $route['language'] = 'home/change_language';
 
 $route['company'] = 'company';
-$route['event'] = 'event';
+$route['event'] = 'events';
 $route['contact'] = 'contact';
 
 
