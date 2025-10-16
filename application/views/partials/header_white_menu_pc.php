@@ -237,6 +237,9 @@ ul li {
     padding-left: 22px !important;
     padding-right: 22px !important;
 }
+.mega-sec-menu-title{
+    font-weight: 500 !important;
+}
 </style>
 
 <nav class="navbar navbar-expand-lg navbar-dark p-0">
@@ -366,7 +369,7 @@ ul li {
                         <div class="w-md-100 pb-10"></div>
                     </div>
                 </li>
-                <li class="nav-item"><a class="nav-link" href="<?= base_url("event") ?>"><?= get_phrase("News_&_Events") ?></a></li>
+                <li class="nav-item"><a class="nav-link" href="<?= base_url("events") ?>"><?= get_phrase("News_&_Events") ?></a></li>
                 <li class="nav-item"><a class="nav-link" href="<?= base_url("our-company") ?>"><?= get_phrase("Our_Company") ?></a></li>
                 <li class="nav-item"><a class="nav-link" href="<?= base_url("contact") ?>"><?= get_phrase("Contact") ?></a></li>
                 <ul class="nav-link mt-0 me-0">
@@ -406,7 +409,7 @@ ul li {
             </div>
         </div>
         <div class="mobile-nav-item">
-            <a href="<?= base_url("event") ?>"><?= get_phrase("News_&_Events") ?></a>
+            <a href="<?= base_url("events") ?>"><?= get_phrase("News_&_Events") ?></a>
         </div>
         <div class="mobile-nav-item">
             <a href="<?= base_url("our-company") ?>"><?= get_phrase("Our_Company") ?></a>

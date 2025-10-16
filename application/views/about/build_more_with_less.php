@@ -80,7 +80,7 @@
                         <div class="w-md-40 ps-0 pb-10 pr-md-10 pr-sm-0">
 
                             <div class="form-container c-left">
-
+                                 
                                 <?= $page['page_description_'.s_lang()] ?>
 
                             </div>

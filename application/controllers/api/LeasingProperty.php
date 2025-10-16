@@ -71,6 +71,7 @@ class LeasingProperty extends SecureApiController {
         $this->db->from('anken_leasing_properties p');
         $this->db->join('anken_file_library f', 'p.image = f.id', 'left');
         $this->db->where('p.leasing_page_id', $pageId);
+        $this->db->order_by('p.position', 'ASC');
         $results = $this->db->get()->result();
         $final = [];
         

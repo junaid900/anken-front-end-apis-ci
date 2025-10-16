@@ -39,9 +39,9 @@ body {
 
 .hero-bg-img .hero-img {
     float: left;
-    width: 69px;
+    width: 75px;
     /* margin-left: calc(50% - 50px); */
-    height: 17.5px;
+    height: 19.8px;
 }
 
 .sec-1 .sec-1-left {
@@ -456,18 +456,18 @@ white-space: pre-line !important;
 }
 
 .anken_section_center {
-    width: 50%;
+    width: 100%;
 }
 
 @media (min-width: 999px) and (max-width: 1600px) {
     .col-lg-5 {
         flex: 0 0 auto;
-        width: 39.66666667% !important;
+        width: 40% !important;
     }
 
     .col-lg-7 {
         flex: 0 0 auto;
-        width: 60.33333333% !important;
+        width: 60% !important;
     }
 
     .get-in-touch {
@@ -476,8 +476,23 @@ white-space: pre-line !important;
     .sec-1-right-text>div{
         min-height: 238.5px;
     }
+    #main_image_div .col-md-4,
+    #intro_data_div .col-md-4{
+        width: 32.333333% !important;
+    }
+    #main_image_div .col-md-8,
+     #intro_data_div .col-md-8
+     {
+        width: 67.666667%;
+    }
+    #main_image_div .intro_div{
+        padding: 24px !important;
+    }
 }
-
+.h_link.h2 span{
+    font-size: 36px !important;
+    font-weight: 600;
+}
 @media(max-width:576px) {
     .anken_section_center {
         height: 273px !important;
@@ -565,22 +580,46 @@ white-space: pre-line !important;
     .bx-viewport {
         height: fit-content !important;
     }
+    .get-in-touch .h_link h2 span {
+        font-size: 25px !important;
+    }
+    .h_link.h2 span{
+          font-size: 25px !important;
+    }
     /* .bannerscfff{
         overflow-x: scroll !important;  } */
 }
 .anken_about_data_text {
     font-size: 36px !important;
 }
-.h_link.h2 span{
-    font-size: 36px !important;
-    font-weight: 600;
-}
+
 .content h3{
     line-height: 24px !important;
 }
 .content .custom-group{
     font-size: 12px !important;
 }
+.white_space{
+    white-space: pre-line !important;
+}
+
+
+@media(min-width:1600px){
+    .hero-bg-img .hero-img {
+            float: left;
+            width: 89px;
+            height: 25px;
+    }
+}
+/* .custom-group span{
+    font-size: 100% !important;
+}
+.content .custom-group {
+    font-size: 100% !important;
+} */
+
+
+
 </style>
 
 <div class="anken_featuredutiesarea home-page">
@@ -790,11 +829,12 @@ $(document).ready(function() {
 
 
                     <section>
-                        <div class="row w-100 sec-1">
+                        <div class="row w-100 sec-1" id="intro_data_div">
                             <div class="col-lg-7 col-12 sec-1-left">
                                 <div class="position-relative   w-100">
+                                    <a href="<?php echo $all_data['leasing_url'] ?>" class="<?php echo $all_data['leasing_url'] != '#' ? '' : 'hide_cursor' ; ?>">
                                     <img src="<?php echo base_url() . $all_data['leasing_image']['path'] ?>"
-                                        style="height: 470px; object-fit: cover;" class="img-fluid w-100" alt="">
+                                        style="height: 470px; object-fit: cover;" class="img-fluid w-100" alt=""></a>
                                     <div class="position-absolute  sec-1-left-absolute ">
                                         <h2 class="h2 heading  fw-bold w-100 ">
                                             <a href="<?php echo $all_data['leasing_url'] ?>"
@@ -846,8 +886,9 @@ $(document).ready(function() {
                             <div class="col-lg-5 col-12 sec-1-right">
                                 <div class="w-100">
                                     <div class="position-relative">
+                                        <a href="<?php echo $all_data['places_url']; ?>" class="<?php echo $all_data['places_url'] != '#' ? '' : 'hide_cursor' ; ?>">
                                         <img src="<?php echo base_url() . $all_data['places_image']['path'] ?>"
-                                            class="img-fluid w-100" alt="">
+                                            class="img-fluid w-100" alt=""></a>
                                         <div class="position-absolute bottom-0 h2 text-white fw-bold ps-2 initial_word">
                                             <a href="<?php echo $all_data['places_url']; ?>"
                                                 class="text-decoration-none position-static">
@@ -869,7 +910,7 @@ $(document).ready(function() {
                                             </div>
 
                                             <div class="read-more text-uppercase pt-2">
-                                                <a href="#" class="more"><?php echo get_phrase('read_more'); ?></a>
+                                                <a href="<?= base_url('events') ?>" class="more"><?php echo get_phrase('read_more'); ?></a>
                                             </div>
                                         </div>
                                     </div>
@@ -884,7 +925,7 @@ $(document).ready(function() {
                     <section>
                         <div class="row sec-2">
                             <div class="col-lg-7 px-0">
-                                <div class="row">
+                                <div class="row" id="main_image_div">
                                     <div class="col-md-4 col-12 m-0 p-0">
                                         <div class="img-box w-100">
                                             <a href="<?php echo base_url() . $all_data['bottom_image1_url'] != '#' ? $all_data['bottom_image1_url'] : 'javascript:void(0)' ; ?>"
@@ -933,11 +974,11 @@ $(document).ready(function() {
                                                     src="<?php echo base_url() . $all_data['bottom_cover2']['path'] ?>"
                                                     class="img-fluid h-100 w-100 " alt=""></a>
                                         </div>
-                                        <div class="sec-2-2 position-relative mt-0">
+                                        <div class="sec-2-2 position-relative mt-0 intro_div">
                                             <div class="lightWhit grey-clr  ">
                                                 <div class="content px-2">
-                                                    <h2 class="h4 ps-lg-3 text-white text-start ">
-                                                        <b><?php echo get_phrase('sustainable_by_design'); ?></b>
+                                                    <h2 class="h4 ps-lg-3 mb-3 text-white text-start ">
+                                                        <b style="font-weight: 800;letter-spacing: .5px;font-family: 'SourceSansProSemiBold'"><?php echo get_phrase('sustainable_by_design'); ?></b>
                                                         <br />
                                                     </h2>
 

@@ -242,6 +242,7 @@ public function about_data($main_about , $slug){
             $this->db->from('anken_leasing_properties p');
             $this->db->join('anken_file_library f', 'p.image = f.id', 'left');
             $this->db->where('p.leasing_page_id', $row->id);
+            $this->db->order_by('p.position', 'asc');
             $results = $this->db->get()->result();
             $final = [];
             
@@ -570,10 +571,29 @@ public function place_made_of_people($slug){
         //    --------------------------------------------------------------------------------------------------------------------
             $this->db->where( 'slug', $slug );
             $leasing = $this->db->get( 'anken_leasing_page' )->row();
-            $this->db->select('p.*, f.id as file_id, f.file, f.directory_id');
+            $this->db->select('p.*, 
+                f_top.id as top_image_file_id, 
+                f_top.file as top_image_file, 
+                f_top.directory_id as top_image_directory_id,
+                f_desc1.id as desc_image1_file_id,
+                f_desc1.file as desc_image1_file,
+                f_desc1.directory_id as desc_image1_directory_id,
+                f_desc2.id as desc_image2_file_id,
+                f_desc2.file as desc_image2_file,
+                f_desc2.directory_id as desc_image2_directory_id');
             $this->db->from('anken_leasing_page p');
-            $this->db->join('anken_file_library f', 'p.top_image = f.id', 'left');
+               // Join for top image
+            $this->db->join('anken_file_library f_top', 'p.top_image = f_top.id', 'left');
+            
+            // Join for description image 1
+            $this->db->join('anken_file_library f_desc1', 'p.description_image1 = f_desc1.id', 'left');
+            
+            // Join for description image 2
+            $this->db->join('anken_file_library f_desc2', 'p.description_image2 = f_desc2.id', 'left');
+            
+            
             $this->db->where('p.id', $leasing->id);
+            
             $row = $this->db->get()->row();
 
             if ( !$row ) {
@@ -584,21 +604,46 @@ public function place_made_of_people($slug){
 
             $pageData = (array) $row;
     
-            $file = null;
-            if (!empty($row->file_id)) {
-                $filePath = ($row->directory_id == 0)
-                    ? "{$this->libraryPath}/{$row->file}"
-                    : "{$this->libraryPath}/{$row->directory_id}/{$row->file}";
+            // $file = null;
+            // if (!empty($row->file_id)) {
+            //     $filePath = ($row->directory_id == 0)
+            //         ? "{$this->libraryPath}/{$row->file}"
+            //         : "{$this->libraryPath}/{$row->directory_id}/{$row->file}";
         
-                $file = [
-                    'id' => $row->file_id,
-                    'file' => $row->file,
-                    'directory_id' => $row->directory_id,
-                    'path' => $filePath
-                ];
-            }
+            //     $file = [
+            //         'id' => $row->file_id,
+            //         'file' => $row->file,
+            //         'directory_id' => $row->directory_id,
+            //         'path' => $filePath
+            //     ];
+            // }
+            $buildImage = function ($id, $file, $dir) {
+                if (!$id) return null;
+                $path = ($dir == 0) ? "{$this->libraryPath}/{$file}" : "{$this->libraryPath}/{$dir}/{$file}";
+                return ['id' => $id, 'file' => $file, 'directory_id' => $dir, 'path' => $path];
+            };
+            
+            $pageData['top_image'] = $buildImage(
+                $row->top_image_file_id, 
+                $row->top_image_file, 
+                $row->top_image_directory_id
+            );
+    
+            // Process description image 1
+            $pageData['description_image1'] = $buildImage(
+                $row->desc_image1_file_id, 
+                $row->desc_image1_file, 
+                $row->desc_image1_directory_id
+            );
+    
+            // Process description image 2
+            $pageData['description_image2'] = $buildImage(
+                $row->desc_image2_file_id, 
+                $row->desc_image2_file, 
+                $row->desc_image2_directory_id
+            );
         
-            $pageData['top_image'] = $file;
+            // $pageData['top_image'] = $file;
             
             // $this->db->select('p.*, f.id as file_id, f.file, f.directory_id');
             // $this->db->from('anken_leasing_properties p');
@@ -609,6 +654,7 @@ public function place_made_of_people($slug){
             $this->db->from('anken_leasing_properties p');
             $this->db->join('anken_file_library f', 'p.image = f.id', 'left');
             $this->db->where('p.leasing_page_id', $row->id);
+            $this->db->order_by('p.position', 'asc');
             $results = $this->db->get()->result();
             $final = [];
             

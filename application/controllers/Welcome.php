@@ -125,6 +125,7 @@ class Welcome extends CI_Controller
 
         $data['all_data'] = $rowArray;
         
+        $this->db->order_by('home_position', 'asc');
         $data['locations'] = $this->db->get_where('anken_location_page',['is_home' => 1])->result_array();
         $this->db->limit(4);
         $data['news'] = $this->db->get('anken_events')->result_array();

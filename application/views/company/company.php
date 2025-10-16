@@ -98,7 +98,7 @@
 
                       <div class="form-container c-company-bottom">
 
-                        <div class="d-flex flex-wrap pb-4 mb-4">
+                        <div class="d-flex flex-wrap  mb-0">
 
                           <div class="col-5th p-2">
 
@@ -135,7 +135,7 @@
                           <div class="mb-3 w-100"></div>
 
                         </div>
-                        <div class="d-flex flex-wrap pb-4 mb-4">
+                        <div class="d-flex flex-wrap  mb-4">
                              <div class="col-5th p-2">
     
                                   <div>

@@ -44,6 +44,10 @@
         padding: 0 5px !important;
     }
    }
+   .places-made-heading {
+    letter-spacing: 1.5px;
+    color:#ffffff;
+   }
 </style>
 
 
@@ -95,7 +99,7 @@
                                     <div class="title_arrow p-1">
                                         <div class="content_hide_div">
                                             <h2 class="bold-heading text-start events-heading">Book an Event Space</h2>
-                                            <p class="p-1">Discover versatile event spaces at ANKEN ideal for any occasion - from large exhibitions to intimate gatherings. CLICK HERE to enquire about space today.</p>
+                                            <p class="p-1">Discover versatile event spaces at ANKEN ideal for any occasion - from large exhibitions to intimate gatherings. <a href="mailto:events@ankengroup.com" style="color:#5f6062;" class="text-decoration-none">CLICK HERE</a> to enquire about space today.</p>
                                         </div>
                                     </div>
                                 </div>

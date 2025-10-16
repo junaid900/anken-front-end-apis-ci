@@ -44,6 +44,7 @@ class LocationPage extends SecureApiController {
                 response(403, 1, ucfirst(str_replace('_', ' ', 'available_leasing_description_ch')) . ' is required.', []);
             }
         }
+        
     
         // Build data array from all relevant fields (optional fields allowed)
         $data = [
@@ -70,18 +71,23 @@ class LocationPage extends SecureApiController {
             'bottom_image1' => $request->bottom_image1 ?? null,
             'bottom_image2' => $request->bottom_image2 ?? null,
             'bottom_image3' => $request->bottom_image3 ?? null,
+            
+            // 'description_type' => $request->description_type ?? null,
             'available_leasing_image2' => $request->available_leasing_image2 ?? null,
             'available_leasing_type' => $request->available_leasing_type ?? null,
             'available_leasing_url' => $request->available_leasing_url ?? null,
             'bottom_image1_url' => $request->bottom_image1_url ?? null,
             'bottom_image2_url' => $request->bottom_image2_url ?? null,
             'bottom_image3_url' => $request->bottom_image3_url ?? null,
+            
             'status' => $request->status ?? 1,
             'page_type' => $request->page_type ?? 'anken_properties',
-            'position' => $request->position ?? 0,
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
         ];
+        if($request->position){
+            $data["position"] = $request->position;
+        }
     
         if ($request->id && $request->id != 0) {
             // Update existing
