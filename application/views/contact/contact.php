@@ -291,7 +291,7 @@
                                         <div class="form-group col-md-12 captcha-container" style="width: 124px;">
                                             <label><?php echo get_phrase('Enter_display_letters') ?>:</label>
                                             <!-- <div class="row"> -->
-                                            <div class="d-flex align-items-center justify-content-center p-0">
+                                            <div class="d-flex align-items-center justify-content-start p-0">
                                                 <input type="text" id="captchaInput" class=" captcha-input" required>
                                             </div>
                                             <!-- </div> -->
