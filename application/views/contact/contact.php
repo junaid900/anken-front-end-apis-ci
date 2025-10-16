@@ -287,7 +287,7 @@
                                 <div class="pe-4">
                                     
                                     <div class="mm position-relative ps-3 mt-5 d-flex align-items-start justify-content-end gap-5" >
-                                        <input style="order:2;" class="contact-submit " type="submit" value="Submit">
+                                        <input style="order:2;" class="contact-submit " type="submit" value="<?=get_phrase('submit')?>">
                                         <div class="form-group col-md-12 captcha-container" style="width: 124px;">
                                             <label><?php echo get_phrase('Enter_display_letters') ?>:</label>
                                             <!-- <div class="row"> -->
