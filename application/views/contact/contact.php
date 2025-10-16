@@ -101,7 +101,7 @@
     padding: 3px 5px;
     width: 80%;
     display: block;
-    margin: auto;
+    /* margin: auto; */
     margin-top: 5px;
     outline: none;
     -webkit-transition: all 300ms;
