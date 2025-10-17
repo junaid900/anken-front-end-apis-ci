@@ -45,8 +45,13 @@
     }
    }
    .places-made-heading {
-    letter-spacing: 1.5px;
+    /*letter-spacing: 1.5px;*/
     color:#ffffff;
+    font-family: 'SourceSansProSemiBold';
+    font-size:22px;
+   }
+   .events-heading{
+       font-size: 22px !important;
    }
 </style>
 
@@ -86,7 +91,7 @@
                                 <div class="form-container h-100 p-2">
                                     <div class="title_arrow p-1">
                                         <div class="content_hide_div ">
-                                            <h2 class="bold-heading text-start events-heading">Latest News <br>&amp; Events</h2>
+                                            <h2 class="bold-heading text-start events-heading"><?= get_phrase('Latest_News_&_Events') ?></h2>
                                             <p class="p-1"></p>
                                         </div>
                                     </div>
@@ -98,8 +103,8 @@
                                 <div class="form-container h-100 p-2  bg_changer_event">
                                     <div class="title_arrow p-1">
                                         <div class="content_hide_div">
-                                            <h2 class="bold-heading text-start events-heading">Book an Event Space</h2>
-                                            <p class="p-1">Discover versatile event spaces at ANKEN ideal for any occasion - from large exhibitions to intimate gatherings. <a href="mailto:events@ankengroup.com" style="color:#5f6062;" class="text-decoration-none">CLICK HERE</a> to enquire about space today.</p>
+                                            <h2 class="bold-heading text-start events-heading"><?= get_phrase('Book_an_Event_Space') ?></h2>
+                                            <p class="p-1"><?= get_phrase("Discover_versatile_event_spaces_at_ANKEN_ideal_for_any_occasion_-_from_large_exhibitions_to_intimate_gatherings.") ?> <a href="mailto:events@ankengroup.com" style="color:#5f6062;" class="text-decoration-none"><?=get_phrase("CLICK_HERE")?></a> <?=get_phrase("to_enquire_about_space_today.")?></p>
                                         </div>
                                     </div>
                                 </div>
@@ -121,14 +126,14 @@
                         <?php } ?>
                         <!---->
                         <div class="d-flex flex-wrap w-100" id="hover_card">
-                            <div class="col-5th">
-                              <div class="card bg-dark-grey p-3 h-100">
+                            <div class="col-5th p-5">
+                              <div class="card m-0 w-100 bg-dark-grey p-3 h-100">
                                   <h4 class="places-made-heading"><?php echo get_phrase('PLACES'); ?><br><?php echo get_phrase('MADE_OF'); ?><br><?php echo get_phrase('PEOPLE'); ?></h4>
                               </div>  
                             </div>
                         <?php foreach($event_places as $place){ ?>
-                           <div class="col-5th">
-                                <div class="card">
+                           <div class="col-5th p-5">
+                                <div class="card m-0">
                                     <img src="<?= base_url() . $place["image"]["path"] ?>" alt="Card Image">
                                     <div class="overlay">
                                         <h4 class="small-bold-heading c-white"><?= $place["title_".s_lang()] ?></h4>
