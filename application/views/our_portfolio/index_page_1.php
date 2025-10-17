@@ -36,7 +36,7 @@ h1 {
     font-weight: 600;
     text-align: left;
     margin: 0 auto 28px !important;
-    line-height: 30px !important;
+    line-height: 28px !important;
 }
 
 .large-bold-heading2 {
@@ -78,7 +78,14 @@ h1 {
 .hide_cursor {
     cursor: default !important;
 }
-
+.available-leasing-desc{
+        line-height: 1.3;
+        padding-bottom: 38px !important;
+}
+.newdiv h2{
+        margin-bottom: 13px !important;
+        
+}
 </style>
 
 <div class='anken_featuredutiesarea'>
@@ -208,7 +215,7 @@ h1 {
                                      }
                                     ?>
                                     <a href='<?php echo  $url_mail ?>' class="<?php echo $cursor_hide_class; ?>">
-                                        <div class='title_arrow  img_Div grey h-100'>
+                                        <div class='title_arrow  img_Div grey h-100 available-leasing-desc'>
                                             <h2><?php
                                                 echo $page[ 'available_leasing_title_'.s_lang() ];
                                             ?></h2>

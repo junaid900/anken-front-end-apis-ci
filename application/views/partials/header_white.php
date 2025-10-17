@@ -209,7 +209,24 @@ if(isset($newsinfo)){
 <script type="text/javascript" src="<?php echo CDN_URL().'themes/default/js/jquery-3.6.0.min.js?date='.CACHE_USETIME()?>"></script>
 
 <link rel="stylesheet" type="text/css" href="<?php echo CDN_URL().'themes/default/base.css?date='.CACHE_USETIME()?>" />
-
+<style>
+    .custom-group br {
+        display: block;
+        margin-bottom: 2px;
+        font-size:2px;
+        line-height: 13px;
+    }
+    .custom-group br:before {
+        display: block;
+        margin-top: 2px;
+        content: "";
+    }
+    .custom-group br:after {
+        content: ".";
+        visibility: hidden;
+        display: block;
+    }
+</style>
 </head>
 
 <body>
