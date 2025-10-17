@@ -71,7 +71,7 @@ h1 {
     }
 }
 
-.portfolio_dec p a {
+.portfolio_dec a {
     color: #5f6062 !important;
 }
 
@@ -79,9 +79,6 @@ h1 {
     cursor: default !important;
 }
 
-a {
-    color: #5f6062 !important;
-}
 </style>
 
 <div class='anken_featuredutiesarea'>
